@@ -1,0 +1,60 @@
+// {
+//   "version": "2.0.0",
+//   "tasks": [
+//     {
+//       // Название задачи, которое будет видно в VS Code (можно изменить)
+//       "label": "Open Fortran Dev Terminal (cmd)",
+//       "type": "shell", // Тип задачи - выполнение команды в оболочке
+//       // Команда: установить переменную для Build Tools, затем вызвать setvars.bat
+//       // Добавление 'intel64' часто помогает setvars.bat
+//       "command": "set \"VS2022INSTALLDIR=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\" && call \"C:\\Program Files (x86)\\Intel\\oneAPI\\setvars.bat\" intel64",
+//       "presentation": {
+//         "reveal": "always", // Всегда показывать панель терминала при запуске
+//         // Лучше использовать отдельную панель для этого интерактивного терминала
+//         "panel": "new",
+//         "clear": true, // Очищать терминал перед каждым запуском задачи
+//         // Полезно видеть, что команда настройки выполнилась
+//         "echo": true
+//       },
+//       "options": {
+//         // Явно указываем использовать cmd.exe
+//         "shell": {
+//           "executable": "cmd.exe",
+//            // Используем /k чтобы ОСТАВИТЬ терминал ОТКРЫТЫМ после команды
+//           "args": [ "/d", "/k" ]
+//         }
+//       },
+//       // Указывает, что эту задачу нужно запускать вручную
+//       "runOptions": { "runOn": "default" }
+//     }
+//   ]
+// }
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Intel oneAPI Dev Terminal (cmd)",
+      "type": "shell",
+      "command": "",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "clear": true,
+        "echo": true
+      },
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": [
+            "/k",
+            "set \"VS2022INSTALLDIR=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\" && call \"C:\\Program Files (x86)\\Intel\\oneAPI\\setvars.bat\" intel64"
+          ]
+        }
+      },
+      "runOptions": {
+        "runOn": "default"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

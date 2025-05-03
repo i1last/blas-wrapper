@@ -1,0 +1,18 @@
+# Git
+.git/
+.gitignore
+
+# IDE config files
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# Docker
+.dockerignore
+docker-compose.yml
+Dockerfile
+
+# Other
+README.md

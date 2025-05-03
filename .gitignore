@@ -1,3 +1,37 @@
-*.obj
+# Build artifacts
+build/
+*/build/
 *.o
+*.a
+*.so
+*.dll
 *.exe
+*.out
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
+
+# IDE config files
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Docker related (if needed, usually not ignored)
+# .dockerignore can be used to exclude files from Docker build context
+
+# Test framework artifacts (example for Catch2)
+catch_discover_tests*

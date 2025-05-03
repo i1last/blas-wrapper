@@ -1,0 +1,32 @@
+* text=auto
+
+*.sh           eol=lf
+*.bash         eol=lf
+*.zsh          eol=lf
+*.py           eol=lf
+*.rb           eol=lf
+*.pl           eol=lf
+Makefile       eol=lf
+Dockerfile     eol=lf
+docker-compose.yml eol=lf
+.gitignore     eol=lf
+.gitattributes eol=lf
+
+*.bat          eol=crlf
+*.cmd          eol=crlf
+
+*.png          -text
+*.jpg          -text
+*.jpeg         -text
+*.gif          -text
+*.ico          -text
+*.pdf          -text
+*.bin          -text
+*.exe          -text
+*.dll          -text
+*.so           -text
+*.a            -text
+*.lib          -text
+*.zip          -text
+*.gz           -text
+*.tar          -text

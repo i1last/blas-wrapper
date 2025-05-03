@@ -1,0 +1,14 @@
+services:
+  build_env:
+    image: blas_wrapper_env:latest
+    build:
+      context: .
+      args: # Передаем ID текущего пользователя хоста, чтобы файлы создавались с правильными правами
+        USER_ID: ${UID:-1000}
+        GROUP_ID: ${GID:-1000}
+    container_name: blas_wrapper_container
+    volumes:
+      - .:/app
+    working_dir: /app
+    stdin_open: true
+    tty: true

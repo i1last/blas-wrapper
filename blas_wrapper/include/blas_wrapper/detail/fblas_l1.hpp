@@ -3,7 +3,14 @@
 
 #include <complex>
 
-using blas_int = int;
+#ifdef MKL_ILP64  // ILP64 интерфейс
+    using blas_int = long long;
+    #pragma message("Compiling with MKL ILP64 interface (64-bit integers)")
+#else  // LP64 интерфейс (по умолчанию)
+    using blas_int = int;
+    #pragma message("Compiling with MKL LP64 interface (32-bit integers)")
+#endif
+
 using blas_complex_double = std::complex<double>;
 
 extern "C" {

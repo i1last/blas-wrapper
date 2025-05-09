@@ -18,7 +18,7 @@ compile_commands.json
 
 # IDE config files
 .vscode/
-.idea/
+.idea
 *.suo
 *.user
 *.sln.docstates
@@ -35,3 +35,6 @@ Thumbs.db
 
 # Test framework artifacts (example for Catch2)
 catch_discover_tests*
+
+*.bak
+LLVM-LOGS

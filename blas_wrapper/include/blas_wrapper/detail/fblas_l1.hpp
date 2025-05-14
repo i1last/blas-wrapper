@@ -19,7 +19,7 @@ extern "C" {
     // Level 1 - DOUBLE - axpy
     //
     // Update vector y with x:
-    // --> y := alpha*x + y
+    // --> y := alpha * x + y
     void daxpy_(
         const blas_int* n,
         const double* alpha,
@@ -31,7 +31,7 @@ extern "C" {
     // Level 1 - DOUBLE - scal
     //
     // Scale vector x by a constant:
-    // --> x := alpha*x
+    // --> x := alpha * x
     void dscal_(
         const blas_int* n,
         const double* alpha,

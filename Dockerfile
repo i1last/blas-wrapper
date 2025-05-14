@@ -34,6 +34,9 @@ RUN apt-get install -y --no-install-recommends \
     intel-oneapi-compiler-fortran \
     intel-oneapi-mkl-devel \
     intel-oneapi-tbb-devel \
+    intel-oneapi-dpcpp-debugger \
+    openssh-server \
+    rsync \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -54,6 +57,9 @@ RUN chown developer:developer /home/developer/.bashrc
 
 # Создаем и назначаем владельцем рабочую директорию
 RUN mkdir -p /app && chown developer:developer /app
+
+# Разрешаем ptrace для отладки
+RUN echo "kernel.yama.ptrace_scope = 0" >> /etc/sysctl.conf
 
 # Создаем скрипт точки входа, который будет запускать setvars.sh
 # Это гарантирует, что переменные среды Intel установлены перед выполнением любой команды

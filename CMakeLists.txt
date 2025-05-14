@@ -9,17 +9,31 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Verbose option for compiler
+# Verbose by default
 if(NOT DEFINED COMPILER_VERBOSE)
     set(COMPILER_VERBOSE OFF CACHE BOOL "-v flag to compiler")
     message(STATUS ":: Set COMPILER_VERBOSE = OFF by default")
 endif()
 
-if(BUILD_TESTING)
-    message(STATUS ":: COMPILER_VERBOSE is ON - using -v flag for compile")
+# Testing by default
+if(NOT DEFINED TESTING_MODE)
+    set(TESTING_MODE OFF CACHE BOOL "Enable testing mode with debug flags")
+    message(STATUS ":: Set TESTING_MODE = OFF by default")
+endif()
+
+if(COMPILER_VERBOSE)
+    message(STATUS ":: :: COMPILER_VERBOSE is ON - using -v flag for compile")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v")
 else()
     message(STATUS ":: COMPILER_VERBOSE is OFF - NO using -v flag for compile")
+endif()
+
+if(TESTING_MODE)
+    message(STATUS ":: TESTING_MODE is ON - adding debug flags")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -debug -Rno-debug-disables-optimization")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -debug")
+else()
+    message(STATUS ":: TESTING_MODE is OFF - NO debug flags")
 endif()
 
 # Project declare
@@ -44,14 +58,14 @@ message(STATUS ":: Effective CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 add_subdirectory(blas_wrapper)
 
 # GTest CMake
-if(NOT DEFINED BUILD_TESTING)
-    set(BUILD_TESTING ON CACHE BOOL "Build the tests")
-    message(STATUS ":: Set BUILD_TESTING = ON by default")
+if(NOT DEFINED BUILD_TESTS)
+    set(BUILD_TESTS ON CACHE BOOL "Build the tests")
+    message(STATUS ":: Set BUILD_TESTS = ON by default")
 endif()
 
-if(BUILD_TESTING)
-    message(STATUS ":: BUILD_TESTING is ON - including tests")
+if(BUILD_TESTS)
+    message(STATUS ":: BUILD_TESTS is ON - including tests")
     add_subdirectory(tests)
 else()
-    message(STATUS ":: BUILD_TESTING is OFF - skipping tests")
+    message(STATUS ":: BUILD_TESTS is OFF - skipping tests")
 endif()
